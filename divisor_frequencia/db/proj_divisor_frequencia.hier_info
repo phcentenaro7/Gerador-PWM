@@ -1,0 +1,72 @@
+|divisor_frequencia
+reset => contador:C.reset
+clk_in => mux:M.i[0]
+clk_in => contador:C.clk
+max[0] => contador:C.max[0]
+max[1] => contador:C.max[1]
+max[2] => contador:C.max[2]
+max[3] => contador:C.max[3]
+max[4] => contador:C.max[4]
+max[5] => contador:C.max[5]
+max[6] => contador:C.max[6]
+max[7] => contador:C.max[7]
+div[0] => mux:M.sel[0]
+div[1] => mux:M.sel[1]
+div[2] => mux:M.sel[2]
+div[3] => mux:M.sel[3]
+clk_out << mux:M.y
+
+
+|divisor_frequencia|contador:C
+reset => process_0.IN1
+max[0] => Add0.IN16
+max[1] => Add0.IN15
+max[2] => Add0.IN14
+max[3] => Add0.IN13
+max[4] => Add0.IN12
+max[5] => Add0.IN11
+max[6] => Add0.IN10
+max[7] => Add0.IN9
+clk => y[0]~reg0.CLK
+clk => y[1]~reg0.CLK
+clk => y[2]~reg0.CLK
+clk => y[3]~reg0.CLK
+clk => y[4]~reg0.CLK
+clk => y[5]~reg0.CLK
+clk => y[6]~reg0.CLK
+clk => y[7]~reg0.CLK
+clk => contagem[0].CLK
+clk => contagem[1].CLK
+clk => contagem[2].CLK
+clk => contagem[3].CLK
+clk => contagem[4].CLK
+clk => contagem[5].CLK
+clk => contagem[6].CLK
+clk => contagem[7].CLK
+y[0] <= y[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[4] <= y[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[5] <= y[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[6] <= y[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[7] <= y[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|divisor_frequencia|mux:M
+i[0] => Mux0.IN15
+i[1] => Mux0.IN14
+i[2] => Mux0.IN13
+i[3] => Mux0.IN12
+i[4] => Mux0.IN11
+i[5] => Mux0.IN10
+i[6] => Mux0.IN9
+i[7] => Mux0.IN8
+i[8] => Mux0.IN7
+sel[0] => Mux0.IN19
+sel[1] => Mux0.IN18
+sel[2] => Mux0.IN17
+sel[3] => Mux0.IN16
+y <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+

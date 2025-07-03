@@ -1,0 +1,18 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity divisor_frequencia is
+	generic(N: integer := 8);
+	port(reset: in std_logic;
+		  clk_in: in std_logic;
+		  div: in unsigned(2 downto 0);
+		  clk_out: out std_logic);
+end divisor_frequencia;
+
+architecture comportamento of divisor_frequencia is
+
+
+
+
+end comportamento;

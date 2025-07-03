@@ -1,0 +1,19 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity contador is
+	generic(N: integer := 8);
+	port(reset: in std_logic;
+		  max: in unsigned(N-1 to 0);
+		  clk: in std_logic;
+		  y: out unsigned(N-1 to 0));
+end contador;
+
+architecture comportamento of contador is
+begin
+process(clk)
+begin
+	y <= y + 1 when reset = 1 else 0;
+end process;
+end comportamento;

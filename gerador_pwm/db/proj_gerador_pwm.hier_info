@@ -1,0 +1,165 @@
+|gerador_pwm
+D[0] => comparador:CMP.duty_cycle[0]
+D[1] => comparador:CMP.duty_cycle[1]
+D[2] => comparador:CMP.duty_cycle[2]
+D[3] => comparador:CMP.duty_cycle[3]
+D[4] => comparador:CMP.duty_cycle[4]
+D[5] => comparador:CMP.duty_cycle[5]
+D[6] => comparador:CMP.duty_cycle[6]
+D[7] => comparador:CMP.duty_cycle[7]
+max[0] => divisor_frequencia:DF.max[0]
+max[0] => contador:CT.max[0]
+max[1] => divisor_frequencia:DF.max[1]
+max[1] => contador:CT.max[1]
+max[2] => divisor_frequencia:DF.max[2]
+max[2] => contador:CT.max[2]
+max[3] => divisor_frequencia:DF.max[3]
+max[3] => contador:CT.max[3]
+max[4] => divisor_frequencia:DF.max[4]
+max[4] => contador:CT.max[4]
+max[5] => divisor_frequencia:DF.max[5]
+max[5] => contador:CT.max[5]
+max[6] => divisor_frequencia:DF.max[6]
+max[6] => contador:CT.max[6]
+max[7] => divisor_frequencia:DF.max[7]
+max[7] => contador:CT.max[7]
+reset => divisor_frequencia:DF.reset
+reset => contador:CT.reset
+clk_in => divisor_frequencia:DF.clk_in
+clk_in => comparador:CMP.clk
+div[0] => divisor_frequencia:DF.div[0]
+div[1] => divisor_frequencia:DF.div[1]
+div[2] => divisor_frequencia:DF.div[2]
+div[3] => divisor_frequencia:DF.div[3]
+y_pwm << comb.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gerador_pwm|divisor_frequencia:DF
+reset => contador:C.reset
+clk_in => mux:M.i[0]
+clk_in => contador:C.clk
+max[0] => contador:C.max[0]
+max[1] => contador:C.max[1]
+max[2] => contador:C.max[2]
+max[3] => contador:C.max[3]
+max[4] => contador:C.max[4]
+max[5] => contador:C.max[5]
+max[6] => contador:C.max[6]
+max[7] => contador:C.max[7]
+div[0] => mux:M.sel[0]
+div[1] => mux:M.sel[1]
+div[2] => mux:M.sel[2]
+div[3] => mux:M.sel[3]
+clk_out <= mux:M.y
+
+
+|gerador_pwm|divisor_frequencia:DF|contador:C
+reset => process_0.IN1
+max[0] => Add0.IN16
+max[1] => Add0.IN15
+max[2] => Add0.IN14
+max[3] => Add0.IN13
+max[4] => Add0.IN12
+max[5] => Add0.IN11
+max[6] => Add0.IN10
+max[7] => Add0.IN9
+clk => y[0]~reg0.CLK
+clk => y[1]~reg0.CLK
+clk => y[2]~reg0.CLK
+clk => y[3]~reg0.CLK
+clk => y[4]~reg0.CLK
+clk => y[5]~reg0.CLK
+clk => y[6]~reg0.CLK
+clk => y[7]~reg0.CLK
+clk => contagem[0].CLK
+clk => contagem[1].CLK
+clk => contagem[2].CLK
+clk => contagem[3].CLK
+clk => contagem[4].CLK
+clk => contagem[5].CLK
+clk => contagem[6].CLK
+clk => contagem[7].CLK
+y[0] <= y[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[4] <= y[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[5] <= y[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[6] <= y[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[7] <= y[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gerador_pwm|divisor_frequencia:DF|mux:M
+i[0] => Mux0.IN15
+i[1] => Mux0.IN14
+i[2] => Mux0.IN13
+i[3] => Mux0.IN12
+i[4] => Mux0.IN11
+i[5] => Mux0.IN10
+i[6] => Mux0.IN9
+i[7] => Mux0.IN8
+i[8] => Mux0.IN7
+sel[0] => Mux0.IN19
+sel[1] => Mux0.IN18
+sel[2] => Mux0.IN17
+sel[3] => Mux0.IN16
+y <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gerador_pwm|contador:CT
+reset => process_0.IN1
+max[0] => Add0.IN16
+max[1] => Add0.IN15
+max[2] => Add0.IN14
+max[3] => Add0.IN13
+max[4] => Add0.IN12
+max[5] => Add0.IN11
+max[6] => Add0.IN10
+max[7] => Add0.IN9
+clk => y[0]~reg0.CLK
+clk => y[1]~reg0.CLK
+clk => y[2]~reg0.CLK
+clk => y[3]~reg0.CLK
+clk => y[4]~reg0.CLK
+clk => y[5]~reg0.CLK
+clk => y[6]~reg0.CLK
+clk => y[7]~reg0.CLK
+clk => contagem[0].CLK
+clk => contagem[1].CLK
+clk => contagem[2].CLK
+clk => contagem[3].CLK
+clk => contagem[4].CLK
+clk => contagem[5].CLK
+clk => contagem[6].CLK
+clk => contagem[7].CLK
+y[0] <= y[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[1] <= y[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[2] <= y[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[3] <= y[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[4] <= y[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[5] <= y[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[6] <= y[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+y[7] <= y[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gerador_pwm|comparador:CMP
+clk => y~reg0.CLK
+contagem[0] => LessThan0.IN8
+contagem[1] => LessThan0.IN7
+contagem[2] => LessThan0.IN6
+contagem[3] => LessThan0.IN5
+contagem[4] => LessThan0.IN4
+contagem[5] => LessThan0.IN3
+contagem[6] => LessThan0.IN2
+contagem[7] => LessThan0.IN1
+duty_cycle[0] => LessThan0.IN16
+duty_cycle[1] => LessThan0.IN15
+duty_cycle[2] => LessThan0.IN14
+duty_cycle[3] => LessThan0.IN13
+duty_cycle[4] => LessThan0.IN12
+duty_cycle[5] => LessThan0.IN11
+duty_cycle[6] => LessThan0.IN10
+duty_cycle[7] => LessThan0.IN9
+y <= y~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

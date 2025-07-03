@@ -1,0 +1,45 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity testbench is
+end testbench;
+
+architecture test of testbench is
+
+constant N: integer := 8;
+signal reset: std_logic := '1';
+constant max: unsigned := to_unsigned(6, 8);
+signal clk: std_logic := '0';
+signal y: unsigned := to_unsigned(0, 8);
+
+signal tb_cycles: integer := 12;
+
+component contador is
+	generic(N: integer := 8);
+	port(reset: in std_logic;
+		  max: in unsigned(N-1 downto 0);
+		  clk: in std_logic;
+		  y: out unsigned(N-1 downto 0));
+end component;
+
+begin
+
+C: contador generic map(N) port map(reset, max, clk, y);
+
+process
+begin
+	for k in 1 to tb_cycles loop
+		if k = 10 then
+			reset = '0';
+		else
+			reset = '1';
+		end if;
+		wait for 10 ns;
+		clk <= '1';
+		wait for 10 ns;
+		clk <= '0';
+	end loop
+end process;
+
+end test;

@@ -1,0 +1,25 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity comparador is
+	generic(N: integer := 8);
+	port(clk: in std_logic;
+		  contagem: in unsigned(N-1 downto 0);
+		  duty_cycle: in unsigned(N-1 downto 0);
+		  y: out std_logic);
+end comparador;
+
+architecture comportamento of comparador is
+begin
+process(clk)
+begin
+	if rising_edge(clk) then
+		if contagem < duty_cycle then
+			y <= '1';
+		else
+			y <= '0';
+		end if;
+	end if;
+end process;
+end comportamento;
