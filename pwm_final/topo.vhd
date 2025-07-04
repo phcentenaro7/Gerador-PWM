@@ -17,6 +17,7 @@ signal micro_div: std_logic_vector(2 downto 0);
 signal gpwm_D: unsigned(31 downto 0);
 signal gpwm_max: unsigned(31 downto 0);
 signal gpwm_div: unsigned(2 downto 0);
+signal reset: std_logic;
 
 component gerador_pwm is
 	generic(N: integer := 8);
@@ -39,8 +40,9 @@ component microcontrolador is
 end component;
 
 begin
-	MICRO: microcontrolador port map(CLOCK_50, micro_D, micro_div, micro_max, KEY(0));
-	GPWM: gerador_pwm generic map(32) port map(gpwm_D, gpwm_max, KEY(0), CLOCK_50, gpwm_div, y);
+	reset <= not(KEY(0));
+	MICRO: microcontrolador port map(CLOCK_50, micro_D, micro_div, micro_max, reset);
+	GPWM: gerador_pwm generic map(32) port map(gpwm_D, gpwm_max, reset, CLOCK_50, gpwm_div, y);
 	gpwm_D <= unsigned(micro_D);
 	gpwm_max <= unsigned(micro_max);
 	gpwm_div <= unsigned(micro_div);

@@ -6,7 +6,7 @@ KEY[0] => gerador_pwm:GPWM.reset
 KEY[1] => ~NO_FANOUT~
 KEY[2] => ~NO_FANOUT~
 KEY[3] => ~NO_FANOUT~
-y << gerador_pwm:GPWM.y_pwm
+y <= gerador_pwm:GPWM.y_pwm
 
 
 |topo|microcontrolador:MICRO

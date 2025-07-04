@@ -9,6 +9,6 @@
  </systemtable>
  <library
    expandedCategories="Library/Interface Protocols/Serial,Library/Interface Protocols,Library,Project" />
- <window width="1892" height="800" x="-273" y="215" />
+ <window width="988" height="830" x="0" y="193" />
  <generation synthesis="VHDL" />
 </preferences>
